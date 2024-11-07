@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 
 
-const Home = () => {
+const Dashboard = () => {
   return (
     <div className="mt-9 flex flex-col gap-9">
       <section className="flex flex-col gap-5">
@@ -14,4 +14,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Dashboard
