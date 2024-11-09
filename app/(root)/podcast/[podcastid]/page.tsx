@@ -1,6 +1,10 @@
  const PodcastDetails = ( {params} : { params : { podcastId: string}} ) =>{
   return (
-    <p className="text-white-1"> Podcast Details for {params.podcastId}</p>
+    <div> 
+    <h1 className="text-20 font-bold text-white-1">
+     Create Postcast 
+    </h1>
+  </div>
   )
 }
 
