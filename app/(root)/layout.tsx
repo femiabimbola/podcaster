@@ -2,13 +2,11 @@ import { Leftsidebar } from "@/components/Leftsidebar";
 
 const RootLayout = ({children}: { children: React.ReactNode;}) =>{
   return (
-    <html>
-      <body>
+    <div className="relate flex flex-col">
         <Leftsidebar />
         {children}
         <p>Right sidebar</p>
-      </body>
-    </html>
+      </div>
   );
 }
 
