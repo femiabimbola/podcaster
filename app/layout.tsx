@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ConvexClientProvider } from "./providers/ConvexClientProvider";
+import { ConvexClerkProvider } from "./providers/ConvexClerkProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,9 +17,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "The Podcast App",
   description: "Developed by Femi Abimbola",
-  icons: {
-    icon: "/icons/logo.svg"
-  }
+  icons: { icon: "/icons/logo.svg"}
 };
 
 export default function RootLayout({
@@ -29,12 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ConvexClientProvider>
-            {children}
-        </ConvexClientProvider>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ConvexClerkProvider>
+          {children}
+        </ConvexClerkProvider>
       </body>
     </html>
   );
