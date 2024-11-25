@@ -1,5 +1,4 @@
 
-
 const authConfig = {
   providers: [
     {
