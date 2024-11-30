@@ -7,7 +7,7 @@ import { api } from "@/convex/_generated/api";
 
 
 const Dashboard = () => {
-  const tasks = useQuery(api.tasks.get);
+  // const tasks = useQuery(api.tasks.get);
   return (
     <div className="mt-9 flex flex-col gap-9">
       <section className="flex flex-col gap-5">
