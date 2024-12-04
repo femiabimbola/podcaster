@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
+import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
   podcastTitle: z.string().min(2),
@@ -63,7 +64,7 @@ const createPodcast = () => {
                     <Input className="input-class focus-visible:ring-offset-orange-1"
                       placeholder=" Tush Pro Podcast"
                       {...field}
-                    />
+                    /> 
                   </FormControl>
                   <FormMessage className="text-white-1" />
                 </FormItem>
@@ -94,6 +95,22 @@ const createPodcast = () => {
                 )}
               </Select>
             </div>
+            <FormField
+              control={form.control}
+              name="podcastDescription"
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-2.5">
+                  <FormLabel className="text-16 font-bold text-white-1">Description</FormLabel>
+                  <FormControl>
+                    <Textarea className="input-class focus-visible:ring-offset-orange-1" placeholder="Write a short podcast description" {...field} />
+                  </FormControl>
+                  <FormMessage className="text-white-1" />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex flex-col pt-10">
+            
           </div>
         </form>
       </Form>
