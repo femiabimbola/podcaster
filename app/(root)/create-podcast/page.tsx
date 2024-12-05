@@ -19,6 +19,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 import { Textarea } from "@/components/ui/textarea";
+import GeneratePodcast from "@/components/GeneratePodcast";
+import GenerateThumbnail from "@/components/GenerateThumbnail";
 
 const formSchema = z.object({
   podcastTitle: z.string().min(2),
@@ -110,7 +112,11 @@ const createPodcast = () => {
             />
           </div>
           <div className="flex flex-col pt-10">
-            
+            <GeneratePodcast />
+            <GenerateThumbnail />
+            <div className=" mt-10 w-full">
+              <Button></Button>
+            </div>
           </div>
         </form>
       </Form>
