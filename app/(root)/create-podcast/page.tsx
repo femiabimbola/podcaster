@@ -5,6 +5,7 @@ import {
 } from "@/components/ui/form";
 import { z } from "zod";
 import { useState } from "react"
+import { Loader } from "lucide-react"
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Select,
@@ -21,6 +22,7 @@ import { cn } from "@/lib/utils"
 import { Textarea } from "@/components/ui/textarea";
 import GeneratePodcast from "@/components/GeneratePodcast";
 import GenerateThumbnail from "@/components/GenerateThumbnail";
+import { Id } from "@/convex/_generated/dataModel";
 
 const formSchema = z.object({
   podcastTitle: z.string().min(2),
@@ -32,6 +34,9 @@ const voiceCategories = ['alloy', 'shimmer', 'nova', 'echo', 'fable', 'onyx'];
 const createPodcast = () => {
 
   const [voiceType, setVoiceType] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [imagePrompt, setImagePrompt] = useState('');
+  const [setAudioStorageId, AudioStorageId]= useState<Id<"_storage"> | null>(null)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -112,10 +117,19 @@ const createPodcast = () => {
             />
           </div>
           <div className="flex flex-col pt-10">
-            <GeneratePodcast />
-            <GenerateThumbnail />
+            {/* <GeneratePodcast />  */}
+            {/* <GenerateThumbnail /> */}
             <div className=" mt-10 w-full">
-              <Button></Button>
+              <Button type="submit" className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1">
+                  {isSubmitting ? (
+                    <>
+                      Submitting
+                      <Loader size={20} className="animate-spin ml-2" />
+                    </>
+                  ) : (
+                    'Submit & Publish Podcast'
+                  )}
+              </Button>
             </div>
           </div>
         </form>
