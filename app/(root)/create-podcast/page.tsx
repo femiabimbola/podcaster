@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from "@/hooks/use-toast"
 import { cn } from "@/lib/utils"
 import { Textarea } from "@/components/ui/textarea";
 import GeneratePodcast from "@/components/GeneratePodcast";
@@ -137,7 +137,7 @@ const createPodcast = () => {
           </div>
           <div className="flex flex-col pt-10">
             <GeneratePodcast setAudioStorageId={setAudioStorageId} 
-            setAudio={setAudioUrl} voiceType={voiceType}
+            setAudio={setAudioUrl} voiceType={voiceType!}
             audio={audioUrl} voicePrompt={voicePrompt}
             setVoicePrompt={setVoicePrompt} setAudioDuration={setAudioDuration}
             /> 
