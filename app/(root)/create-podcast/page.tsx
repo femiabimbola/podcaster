@@ -18,6 +18,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useToast } from "@/components/ui/use-toast"
 import { cn } from "@/lib/utils"
 import { Textarea } from "@/components/ui/textarea";
 import GeneratePodcast from "@/components/GeneratePodcast";
@@ -34,9 +35,19 @@ const voiceCategories = ['alloy', 'shimmer', 'nova', 'echo', 'fable', 'onyx'];
 const createPodcast = () => {
 
   const [voiceType, setVoiceType] = useState<string | null>(null);
+  const [voicePrompt, setVoicePrompt] = useState('');
+
   const [isSubmitting, setIsSubmitting] = useState(false);
+ 
+  const [audioUrl, setAudioUrl] = useState('');
+  const [AudioStorageId, setAudioStorageId]= useState<Id<"_storage"> | null>(null)
+  const [audioDuration, setAudioDuration] = useState(0);
+
+  const [imageStorageId, setImageStorageId]= useState<Id<"_storage"> | null>(null)
+  const [imageUrl, setImageUrl] = useState('')
   const [imagePrompt, setImagePrompt] = useState('');
-  const [setAudioStorageId, AudioStorageId]= useState<Id<"_storage"> | null>(null)
+
+  const { toast } = useToast()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,6 +59,14 @@ const createPodcast = () => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
+      setIsSubmitting(true);
+      if(!audioUrl || !imageUrl || !voiceType) {
+        toast({
+          title: 'Please generate audio and image',
+        })
+        setIsSubmitting(false);
+        throw new Error('Please generate audio and image')
+      }
     } catch (error) {}
   };
   return (
@@ -117,7 +136,11 @@ const createPodcast = () => {
             />
           </div>
           <div className="flex flex-col pt-10">
-            {/* <GeneratePodcast />  */}
+            <GeneratePodcast setAudioStorageId={setAudioStorageId} 
+            setAudio={setAudioUrl} voiceType={voiceType}
+            audio={audioUrl} voicePrompt={voicePrompt}
+            setVoicePrompt={setVoicePrompt} setAudioDuration={setAudioDuration}
+            /> 
             {/* <GenerateThumbnail /> */}
             <div className=" mt-10 w-full">
               <Button type="submit" className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1">
