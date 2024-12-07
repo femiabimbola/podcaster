@@ -13,16 +13,14 @@ import { useToast } from "@/hooks/use-toast"
 import { useUploadFiles } from '@xixixao/uploadstuff/react';
 
 const useGeneratePodcast = ({
-  setAudio, voiceType, voicePrompt, setAudioStorageId
+  setAudio, voiceType, voicePrompt, setAudioStorageId, setVoicePrompt
 }: GeneratePodcastProps) => {
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast()
 
   const generateUploadUrl = useMutation(api.files.generateUploadUrl);
   const { startUpload } = useUploadFiles(generateUploadUrl)
-
   const getPodcastAudio = useAction(api.openai.generateAudioAction)
-
   const getAudioUrl = useMutation(api.podcasts.getUrl);
 
   const generatePodcast = async () => {
@@ -30,7 +28,7 @@ const useGeneratePodcast = ({
     setAudio('');
 
     if(!voicePrompt) {
-      toast({
+      toast({ 
         title: "Please provide a voiceType to generate a podcast",
       })
       return setIsGenerating(false);
@@ -64,8 +62,7 @@ const useGeneratePodcast = ({
         variant: 'destructive',
       })
       setIsGenerating(false);
-    }
-    
+    }  
   }
 
   return { isGenerating, generatePodcast }
