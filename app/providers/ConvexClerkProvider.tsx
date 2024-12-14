@@ -9,10 +9,9 @@ const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 export const ConvexClerkProvider = ({ children }: { children: ReactNode }) => {
   return (
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY  as string} appearance={{ layout: { 
-      socialButtonsVariant: 'iconButton',
-      logoImageUrl: '/icons/auth-logo.svg'
-    },
+    <ClerkProvider 
+    publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY  as string} 
+    appearance={{ layout: { socialButtonsVariant: 'iconButton', logoImageUrl: '/icons/auth-logo.svg'},
     variables: {
       colorBackground: '#15171c',
       colorPrimary: '',
