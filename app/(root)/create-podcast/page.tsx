@@ -136,11 +136,11 @@ const createPodcast = () => {
             />
           </div>
           <div className="flex flex-col pt-10">
-            <GeneratePodcast setAudioStorageId={setAudioStorageId} 
+            {/* <GeneratePodcast setAudioStorageId={setAudioStorageId} 
             setAudio={setAudioUrl} voiceType={voiceType!}
             audio={audioUrl} voicePrompt={voicePrompt}
             setVoicePrompt={setVoicePrompt} setAudioDuration={setAudioDuration}
-            /> 
+            />  */}
             {/* <GenerateThumbnail /> */}
             <div className=" mt-10 w-full">
               <Button type="submit" className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1">

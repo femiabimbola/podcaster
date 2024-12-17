@@ -10,6 +10,7 @@ import { internal } from "./_generated/api";
 import { httpAction } from "./_generated/server";
 
 const handleClerkWebhook = httpAction(async (ctx, request) => {
+  console.log("are you here")
   const event = await validateRequest(request);
   if (!event) {
     return new Response("Invalid request", { status: 400 });
@@ -20,7 +21,7 @@ const handleClerkWebhook = httpAction(async (ctx, request) => {
         clerkId: event.data.id,
         email: event.data.email_addresses[0].email_address,
         imageUrl: event.data.image_url,
-        name: event.data.first_name as string,
+        name: event.data.first_name!,
       });
       break;
     case "user.updated":

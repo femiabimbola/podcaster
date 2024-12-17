@@ -7,7 +7,7 @@ import { GenerateThumbnailProps } from '@/types';
 import { Loader } from 'lucide-react';
 import { Input } from './ui/input';
 import Image from 'next/image';
-import { useToast } from './ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { useAction, useMutation } from 'convex/react';
 import { useUploadFiles } from '@xixixao/uploadstuff/react';
 import { api } from '@/convex/_generated/api';

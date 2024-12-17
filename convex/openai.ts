@@ -15,7 +15,6 @@ export const generateAudioAction = action({
       voice: voice as SpeechCreateParams['voice'],
       input,
     });
-
     const buffer = await mp3.arrayBuffer();
     
     return buffer;
