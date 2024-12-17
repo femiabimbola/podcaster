@@ -2,6 +2,7 @@ import { Leftsidebar } from "@/components/Leftsidebar";
 import { MobileNav } from "@/components/MobileNav";
 import {RightSidebar} from "@/components/RightSidebar";
 import Image from "next/image";
+import { Toaster } from "@/components/ui/toaster";
 
 const RootLayout = ({children}: { children: React.ReactNode;}) =>{
   return (
@@ -15,12 +16,11 @@ const RootLayout = ({children}: { children: React.ReactNode;}) =>{
              <MobileNav />
             </div>
             <div className="flex flex-col md:pb-14">
-              Toasters
+              <Toaster />
               {children}
             </div>
           </div>
         </section>
-        
         <RightSidebar />
         </main>
       </div>
