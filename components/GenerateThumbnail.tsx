@@ -14,6 +14,7 @@ import { api } from '@/convex/_generated/api';
 import { v4 as uuidv4 } from 'uuid';
 
 const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, setImagePrompt }: GenerateThumbnailProps) => {
+
   const [isAiThumbnail, setIsAiThumbnail] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(false);
   const imageRef = useRef<HTMLInputElement>(null);
@@ -21,7 +22,7 @@ const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, se
   const generateUploadUrl = useMutation(api.files.generateUploadUrl);
   const { startUpload } = useUploadFiles(generateUploadUrl)
   const getImageUrl = useMutation(api.podcasts.getUrl);
-  // const handleGenerateThumbnail = useAction(api.openai.generateThumbnailAction)
+  const handleGenerateThumbnail = useAction(api.openai.generateThumbnailAction)
 
   const handleImage = async (blob: Blob, fileName: string) => {
     setIsImageLoading(true);
@@ -29,7 +30,6 @@ const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, se
 
     try {
       const file = new File([blob], fileName, { type: 'image/png' });
-
       const uploaded = await startUpload([file]);
       const storageId = (uploaded[0].response as any).storageId;
 
