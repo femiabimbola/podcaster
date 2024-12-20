@@ -32,9 +32,7 @@ const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, se
       const file = new File([blob], fileName, { type: 'image/png' });
       const uploaded = await startUpload([file]);
       const storageId = (uploaded[0].response as any).storageId;
-
       setImageStorageId(storageId);
-
       const imageUrl = await getImageUrl({ storageId });
       setImage(imageUrl!);
       setIsImageLoading(false);
@@ -57,9 +55,9 @@ const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, se
       toast({ title: 'Error generating thumbnail', variant: 'destructive'})
     }
   }
+
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-
     try {
       const files = e.target.files;
       if (!files) return;
